@@ -2,7 +2,7 @@
     "name": "krydos/json-rules-checker",
     "description": "A little library for checking JSON object via rules",
 	"authors": [
-		{"name": "Ruslan Bekenev", "email": "ruslan@bekenev.name", "homepage": "https://github.com/KryDos"},
+		{"name": "Ruslan Bekenev", "email": "ruslan@bekenev.name", "homepage": "https://github.com/KryDos"}
 	],
 	"autoload": {
 		"psr-0": {
@@ -10,6 +10,6 @@
 		}
 	},
     "require": {
-        "php": ">=5.3.0",
+        "php": ">=5.3.0"
     }
 }
