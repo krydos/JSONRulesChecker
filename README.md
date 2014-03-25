@@ -1,7 +1,19 @@
 JSONRulesChecker
 =======================
 This is small library for validation JSON objects in PHP.
-Very ofter I have a code like this:
+
+INSTALLATION
+------------
+Please update your composer.json. Add this to your **require** section
+```
+"krydos/json-rules-checker":"dev-master"
+
+```
+
+WHY DO I NEED THIS
+-------------
+
+Very often I have a code like this:
 ```php
 try {
     $json = getJsonFromAnyPlace();
