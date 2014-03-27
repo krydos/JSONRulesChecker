@@ -18,6 +18,9 @@ class JSONChecker {
                     return self::checkJSON($json->$key, $value);
                 }
                 else {
+                    if($value == '') {
+                        $value = '/.*/';
+                    }
                     if(!@preg_match($value, $json->$key)) {
                         return false;
                     }

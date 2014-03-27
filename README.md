@@ -1,6 +1,6 @@
 JSONRulesChecker
 =======================
-This is small library for validation JSON objects in PHP.
+This is small library for validation JSON objects in PHP (via regex).
 
 INSTALLATION
 ------------
@@ -42,13 +42,16 @@ Like that:
 try {
     $json = getJsonFromAnyPlace();
     // let's imagine that JSON looks something like this:
-    // {"root":{"attr1":"value1", "attr2":"value2"}}
+    // {"root":{"attr1":"value1", "attr2":"value2", "attr3":{"attr3_1":"123"}}}
     
     // let's write a rules
     $rules = array(
         'root' => array(
-            'attr1' => '<string>',
-            'attr2' => '<string>'
+            'attr1' => '/^value1$/',
+            'attr2' => '', // if you don't care what value has this attribute just use empty string
+            'attr3' => array(
+                'attr3_1'=>'/^\d+$/' // just use regex for value validating
+            )
         )
     );
     
