@@ -5,6 +5,7 @@ class JSONChecker {
     
     public static function checkJSON($json, $rules) {
         $result = false;
+        $checker = new self();
 
         /**
          * go through all rules
@@ -13,7 +14,7 @@ class JSONChecker {
 
             if(isset($json->$key)) {
 
-                if(gettype($value) == 'array') {
+                if($checker->isArray($value)) {
                     return self::checkJSON($json->$key, $value);
                 }
                 else {
@@ -31,5 +32,17 @@ class JSONChecker {
         }
 
         return $result;
+    }
+
+    /**
+     * check is this value is array?
+     */
+    private function isArray($value) {
+        if(gettype($value) == 'array') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
