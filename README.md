@@ -48,7 +48,8 @@ try {
     $rules = array(
         'root' => array(
             'attr1' => '/^value1$/',
-            'attr2' => '', // if you don't care what value has this attribute just use empty string
+            'attr2' => '', // if you don't care what value has this attribute 
+                           // then just use empty string
             'attr3' => array(
                 'attr3_1'=>'/^\d+$/' // just use regex for value validating
             )
