@@ -7,7 +7,6 @@ INSTALLATION
 Please update your composer.json. Add this to your **require** section
 ```
 "krydos/json-rules-checker":"dev-master"
-
 ```
 
 WHY DO I NEED THIS
