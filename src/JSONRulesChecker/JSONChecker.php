@@ -17,7 +17,12 @@ class JSONChecker {
                     return self::checkJSON($json->$key, $value);
                 }
                 else {
-                    $result = true;
+                    if(!@preg_match($value, $json->$key)) {
+                        return false;
+                    }
+                    else {
+                        $result = true;
+                    }
                 }
             }
             else {
