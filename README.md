@@ -64,6 +64,13 @@ catch(Exception $e) {
     //do something
 }
 ```
+Thanks
+------
+
+[@secret007][1] - for regex idea
+
+
+  [1]: https://github.com/secret007
 
 I like it :)
 
