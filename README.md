@@ -64,6 +64,9 @@ catch(Exception $e) {
     //do something
 }
 ```
+
+I like it :)
+
 Thanks
 ------
 
@@ -72,7 +75,6 @@ Thanks
 
   [1]: https://github.com/secret007
 
-I like it :)
 
 Please feel free to Pull Requests
 
