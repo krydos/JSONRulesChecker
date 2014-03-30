@@ -3,9 +3,7 @@ namespace JSONRulesChecker;
 
 class JSONChecker {
     
-    public static function checkJSON($json, $rules) {
-        $result = false;
-        $checker = new self();
+    private function check($json, $rules, $result = array()) {
 
         /**
          * go through all rules
@@ -14,23 +12,23 @@ class JSONChecker {
 
             if(isset($json->$key)) {
 
-                if($checker->isArray($value)) {
-                    return self::checkJSON($json->$key, $value);
+                if($this->isArray($value)) {
+                    $result = array_merge($this->check($json->$key, $value, $result), $result);
                 }
                 else {
                     if($value == '') {
                         $value = '/.*/';
                     }
                     if(!@preg_match($value, $json->$key)) {
-                        return false;
+                        $result[] = false;
                     }
                     else {
-                        $result = true;
+                        $result[] = true;
                     }
                 }
             }
             else {
-                $result = false;
+                $result[] = false;
             }
         }
 
@@ -48,4 +46,17 @@ class JSONChecker {
             return false;
         }
     }
+
+    public static function checkJSON($json, $rules, $result = array()) {
+        $checker = new self();
+        $result_array = $checker->check($json, $rules, $result);
+
+        if(array_search(false, $result_array)) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
 }
