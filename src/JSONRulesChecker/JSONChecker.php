@@ -51,11 +51,11 @@ class JSONChecker {
         $checker = new self();
         $result_array = $checker->check($json, $rules, $result);
 
-        if(array_search(false, $result_array)) {
-            return false;
+        if(array_search(false, $result_array) === false) {
+            return true;
         }
         else {
-            return true;
+            return false;
         }
     }
 
