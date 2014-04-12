@@ -1,6 +1,6 @@
 JSONRulesChecker
 =======================
-This is small library for validation JSON objects in PHP (via regex).
+This is small library for validation JSON objects in PHP (via regex). You can describe required attributes and check it on requred values.
 
 INSTALLATION
 ------------
@@ -15,7 +15,8 @@ WHY DO I NEED THIS
 Very often I have a code like this:
 ```php
 try {
-    $json = getJsonFromAnyPlace();
+    $json = json_decode(getJsonStringFromAnyPlace());
+
     if(isset($json->attr1)) {
         // do something with $json->attr1
         
@@ -39,7 +40,7 @@ I really don't like it. I write this library because I want to validate JSON usi
 Like that:
 ```php
 try {
-    $json = getJsonFromAnyPlace();
+    $json = json_deocde(getJsonStringFromAnyPlace());
     // let's imagine that JSON looks something like this:
     // {"root":{"attr1":"value1", "attr2":"value2", "attr3":{"attr3_1":"123"}}}
     
