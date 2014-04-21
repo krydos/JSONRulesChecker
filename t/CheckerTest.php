@@ -3,7 +3,7 @@ require 'src/JSONRulesChecker/JSONChecker.php';
 
 class CheckerTest extends PHPUnit_Framework_TestCase {
 
-    public function testCheckJSON() {
+    public function testJSONCheckerHaveToReturnTrueIfRulesAndJsonAreCorrect() {
         $json = json_decode(json_encode(array(
             'root' => array(
                 'int_attr' => '123124',
@@ -28,7 +28,9 @@ class CheckerTest extends PHPUnit_Framework_TestCase {
             ) 
         ));
         $this->assertTrue($result);
+    }
 
+    public function testJSONCheckerHaveToReturnFlaseIfJsonNotEqualsToRules() {
         $json = json_decode(json_encode(array(
             'attr_2' => 'value'
         )));
@@ -37,7 +39,9 @@ class CheckerTest extends PHPUnit_Framework_TestCase {
         ));
 
         $this->assertFalse($result);
+    }
 
+    public function testReturnFalseIfRulesAndJsonNotCorrect() {
         $json = json_decode(json_encode(array(
             'root' => array(
                 'int_attr' => '123124',
