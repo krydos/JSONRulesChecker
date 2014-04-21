@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/KryDos/JSONRulesChecker.svg?branch=master)](https://travis-ci.org/KryDos/JSONRulesChecker)
 JSONRulesChecker
 =======================
 This is small library for validation JSON objects in PHP (via regex). You can describe required attributes and check it on requred values.
