@@ -12,7 +12,7 @@ class JSONChecker {
 
             if(isset($json->$key)) {
 
-                if($this->isArray($value)) {
+                if(is_array($value)) {
                     $result = array_merge($this->check($json->$key, $value, $result), $result);
                 }
                 else {
@@ -36,24 +36,30 @@ class JSONChecker {
     }
 
     /**
-     * check is this value is array?
+     * invoke this method when you want to validate json
      */
-    private function isArray($value) {
-        if(gettype($value) == 'array') {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-
     public static function checkJSON($json, $rules, $result = array()) {
+        /**
+         * create object of this class
+         */
         $checker = new self();
+
+        /**
+         * main function
+         * invoke it for json checking
+         */
         $result_array = $checker->check($json, $rules, $result);
 
+        /**
+         * if we don't found the false in the result_array
+         * then return true
+         */
         if(array_search(false, $result_array) === false) {
             return true;
         }
+        /**
+         * else return false
+         */
         else {
             return false;
         }
