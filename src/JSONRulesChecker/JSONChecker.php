@@ -12,16 +12,40 @@ class JSONChecker {
 
             if(isset($json->$key)) {
 
+                /**
+                 * if value of json key it's array 
+                 * then call this function again
+                 */
                 if(is_array($value)) {
                     $result = array_merge($this->check($json->$key, $value, $result), $result);
                 }
+
+                /**
+                 * check the value using rexex
+                 */
                 else {
+
+                    /**
+                     * if rule an empty
+                     * then replace it with default regex
+                     */
                     if($value == '') {
                         $value = '/.*/';
                     }
+
+                    /**
+                     * check if rule don't match with json
+                     * then push false to the result array
+                     */
                     if(!@preg_match($value, $json->$key)) {
                         $result[] = false;
                     }
+
+                    /**
+                     * if preg_match returned true 
+                     * then value match to rules 
+                     * then push true to the result array
+                     */
                     else {
                         $result[] = true;
                     }
