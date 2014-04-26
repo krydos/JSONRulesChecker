@@ -36,7 +36,7 @@ catch(Exception $e) {
     // do something
 }
 ```
-I really don't like it. I write this library because I want to validate JSON using some rules.
+I really don't like it. I wrote this library because I want to validate JSON using some rules.
 
 Like that:
 ```php
