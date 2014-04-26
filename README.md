@@ -10,7 +10,7 @@ Please update your composer.json. Add this to your **require** section
 "krydos/json-rules-checker":"dev-master"
 ```
 
-WHY DO I NEED THIS
+WHY DO I NEED THIS (USAGE)
 -------------
 
 Very often I have a code like this:
