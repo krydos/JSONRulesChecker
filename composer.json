@@ -1,8 +1,14 @@
 {
     "name": "krydos/json-rules-checker",
     "description": "A little library for checking JSON object via rules",
+    "license": "MIT",
 	"authors": [
-		{"name": "Ruslan Bekenev", "email": "ruslan@bekenev.name", "homepage": "https://github.com/KryDos"}
+		{
+            "name": "Ruslan Bekenev",
+            "email": "ruslan@bekenev.name",
+            "homepage": "https://github.com/KryDos",
+            "role": "Developer"
+        }
 	],
 	"autoload": {
 		"psr-0": {
