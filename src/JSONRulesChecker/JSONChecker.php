@@ -4,10 +4,6 @@ namespace JSONRulesChecker;
 class JSONChecker {
     public $rules_keys_number;
     public $json_keys_number;
-
-    function __construct($strict) {
-        $this->strict = $strict;
-    }
     
     private function check($json, $rules, $result = array()) {
 
@@ -82,7 +78,7 @@ class JSONChecker {
         /**
          * create object of this class
          */
-        $checker = new self($strict);
+        $checker = new self();
 
         /**
          * main function
