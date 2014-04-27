@@ -78,7 +78,7 @@ So, how to use it
 \JSONRulesChecker\JSONChecker::checkJSON($json, $rules);
 ```
 - by default checker expects that you described only required attributes in the rules array. This means 
-that matching are not strict. For example if you JSON object has 3 keys but your rules array has only 2 (which matchs with JSON) then 
+that matching are not strict. For example if you JSON object has 3 keys but your rules array has only 2 (which matches with JSON) then 
 checker will return **true**.
 So if you want to use **STRICT matching** then you can pass **true** as third parameter into checkJSON() function like this:
 ```php
