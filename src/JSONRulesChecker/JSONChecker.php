@@ -2,6 +2,12 @@
 namespace JSONRulesChecker;
 
 class JSONChecker {
+    public $rules_keys_number;
+    public $json_keys_number;
+
+    function __construct($strict) {
+        $this->strict = $strict;
+    }
     
     private function check($json, $rules, $result = array()) {
 
@@ -9,6 +15,7 @@ class JSONChecker {
          * go through all rules
          */
         foreach($rules as $key => $value) {
+            $this->rules_keys_number++;
 
             if(isset($json->$key)) {
 
@@ -59,20 +66,36 @@ class JSONChecker {
         return $result;
     }
 
+    public function countJsonKeys($json) {
+        foreach($json as $key => $value) {
+            $this->json_keys_number++;
+            if(is_object($value)) {
+                $this->countJsonKeys($value);
+            }
+        }
+    }
+
     /**
      * invoke this method when you want to validate json
      */
-    public static function checkJSON($json, $rules, $result = array()) {
+    public static function checkJSON($json, $rules, $strict = false) {
         /**
          * create object of this class
          */
-        $checker = new self();
+        $checker = new self($strict);
 
         /**
          * main function
          * invoke it for json checking
          */
-        $result_array = $checker->check($json, $rules, $result);
+        $result_array = $checker->check($json, $rules, array());
+        $checker->countJsonKeys($json);
+        if($strict) {
+            if($checker->rules_keys_number != $checker->json_keys_number) {
+                return false;
+            }
+        }
+
 
         /**
          * if we don't found the false in the result_array

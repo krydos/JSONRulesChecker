@@ -67,4 +67,61 @@ class CheckerTest extends PHPUnit_Framework_TestCase {
         ));
         $this->assertFalse($result);
     }
+
+    public function testReturnFalseIfJsonNotMatchWithRulesCompletely() {
+        $json = json_decode(json_encode(array(
+            'root' => array(
+                'int_attr' => '123124',
+                'str_attr' => 'only word shere',
+                'another_array' => array(
+                    'attr1' => '111',
+                    'attr2' => 'www'
+                ),
+                'attr2' => 'hi',
+            )
+        )));
+
+        $result = \JSONRulesChecker\JSONChecker::checkJSON($json, array(
+            'root' => array(
+                'int_attr' => '/^\d+$/',
+                'str_attr' => '',
+                'another_array' => array(
+                    'attr2' => '/www/'
+                ),
+                'attr2' => ''
+            ) 
+        ), true);
+
+        $this->assertFalse($result);
+        
+    }
+
+    public function testReturnTrueIfJsonMatchWithRulesCompletely() {
+        $json = json_decode(json_encode(array(
+            'root' => array(
+                'int_attr' => '123124',
+                'str_attr' => 'only word shere',
+                'another_array' => array(
+                    'attr1' => '111',
+                    'attr2' => 'www'
+                ),
+                'attr2' => 'hi',
+            )
+        )));
+
+        $result = \JSONRulesChecker\JSONChecker::checkJSON($json, array(
+            'root' => array(
+                'int_attr' => '/^\d+$/',
+                'str_attr' => '',
+                'another_array' => array(
+                    'attr1' => '',
+                    'attr2' => '/www/'
+                ),
+                'attr2' => ''
+            ) 
+        ), true);
+
+        $this->assertTrue($result);
+        
+    }
 }
