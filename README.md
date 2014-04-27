@@ -10,7 +10,7 @@ Please update your composer.json. Add this to your **require** section
 "krydos/json-rules-checker":"dev-master"
 ```
 
-WHY DO I NEED THIS (USAGE)
+WHY DO I NEED THIS
 -------------
 
 Very often I have a code like this:
@@ -68,6 +68,22 @@ catch(Exception $e) {
 ```
 
 I like it :)
+
+So, how to use it
+-----------------
+- craete a JSON object via json\_decode() or other functions
+- describe rules for your JSON object (just a PHP array as you can see above)
+- call the rules checker and pass your JSON object and rules into checker like that:
+```php
+\JSONRulesChecker\JSONChecker::checkJSON($json, $rules);
+```
+- by default checker expects that you described only required attributes in the rules array. This means 
+that you matching not strict. For example if you JSON object has 3 keys but you rules array has only 2 (which matchs with JSON) then 
+checker will return **true**.
+So if you want to use **STRICT matching** then you can pass **true** as third parameter into checkJSON() function like this:
+```php
+\JSONRulesChecker\JSONChecker::checkJSON($json, $rules, true);
+```
 
 Thanks
 ------
