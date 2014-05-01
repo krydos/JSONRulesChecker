@@ -86,6 +86,11 @@ class JSONChecker {
          */
         $result_array = $checker->check($json, $rules, array());
         $checker->countJsonKeys($json);
+
+        /**
+         * if strict option is true then
+         * check on strict matching
+         */
         if($strict) {
             if($checker->rules_keys_number != $checker->json_keys_number) {
                 return false;
