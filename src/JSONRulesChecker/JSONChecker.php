@@ -4,6 +4,8 @@ namespace JSONRulesChecker;
 class JSONChecker {
     public $rules_keys_number;
     public $json_keys_number;
+
+    const DEFAULT_REGEX = '/.*/';
     
     private function check($json, $rules, $result = array()) {
 
@@ -33,7 +35,7 @@ class JSONChecker {
                      * then replace it with default regex
                      */
                     if($value == '') {
-                        $value = '/.*/';
+                        $value = self::DEFAULT_REGEX;
                     }
 
                     /**
