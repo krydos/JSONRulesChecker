@@ -71,7 +71,7 @@ I like it :)
 
 So, how to use it
 -----------------
-- craete a JSON object via json\_decode() or other functions
+- create a JSON object via json\_decode() or other functions
 - describe rules for your JSON object (just a PHP array as you can see above)
 - call the rules checker and pass your JSON object and rules into checker like that:
 ```php
