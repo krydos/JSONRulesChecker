@@ -88,10 +88,10 @@ So if you want to use **STRICT matching** then you can pass **true** as third pa
 Thanks
 ------
 
-[@secret007][1] - for regex idea
+[@Sbrilenko][1] - for regex idea
 
 
-  [1]: https://github.com/secret007
+  [1]: https://github.com/Sbrilenko
 
 
 Please feel free to Pull Requests
