@@ -1,13 +1,23 @@
 <?php
 namespace JSONRulesChecker;
 
+/**
+ * Class JSONChecker
+ * @package JSONRulesChecker
+ */
 class JSONChecker {
     public $rules_keys_number;
     public $json_keys_number;
 
     const DEFAULT_REGEX = '/.*/';
-    
-    private function check($json, $rules, $result = array()) {
+
+    /**
+     * @param \stdClass $json
+     * @param array $rules
+     * @param array $result
+     * @return array
+     */
+    private function check(\stdClass $json, array $rules, $result = array()) {
 
         /**
          * go through all rules
@@ -64,7 +74,10 @@ class JSONChecker {
         return $result;
     }
 
-    public function countJsonKeys($json) {
+    /**
+     * @param \stdClass $json
+     */
+    public function countJsonKeys(\stdClass $json) {
         foreach($json as $key => $value) {
             $this->json_keys_number++;
             if(is_object($value)) {
@@ -75,8 +88,13 @@ class JSONChecker {
 
     /**
      * invoke this method when you want to validate json
+     *
+     * @param \stdClass $json
+     * @param array $rules
+     * @param bool $strict
+     * @return bool
      */
-    public static function checkJSON($json, $rules, $strict = false) {
+    public static function checkJSON(\stdClass $json, array $rules, $strict = false) {
         /**
          * create object of this class
          */
