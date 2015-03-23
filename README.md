@@ -41,7 +41,7 @@ I really don't like it. I wrote this library because I want to validate JSON usi
 Like that:
 ```php
 try {
-    $json = json_deocde(getJsonStringFromAnyPlace());
+    $json = json_decode(getJsonStringFromAnyPlace());
     // let's imagine that JSON looks something like this:
     // {"root":{"attr1":"value1", "attr2":"value2", "attr3":{"attr3_1":"123"}}}
     
